@@ -1,4 +1,4 @@
-package com.distinguished.bitcoinpricetracker;
+package com.distinguished.bitcoinpricetracker.pojos;
 
 import com.google.gson.JsonElement;
 import com.google.gson.annotations.SerializedName;

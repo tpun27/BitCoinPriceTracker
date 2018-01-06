@@ -1,8 +1,16 @@
-package com.distinguished.bitcoinpricetracker;
+package com.distinguished.bitcoinpricetracker.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
+import com.distinguished.bitcoinpricetracker.R;
+import com.distinguished.bitcoinpricetracker.clients.BitcoinAPI;
+import com.distinguished.bitcoinpricetracker.pojos.BitcoinPriceHistory;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
@@ -17,7 +25,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MainActivity extends AppCompatActivity {
+public class HistoricalPriceActivity extends AppCompatActivity {
 
     static final String BASE_URL = "https://api.coindesk.com/";
 
@@ -29,7 +37,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.historical_price_graph);
+
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.priceGraphToolbar);
+        setSupportActionBar(myToolbar);
 
         historicalMonthChart = (LineChart) findViewById(R.id.historicalMonthChart);
 
@@ -82,5 +93,37 @@ public class MainActivity extends AppCompatActivity {
         LineData lineData = new LineData(dataSet);
         historicalMonthChart.setData(lineData);
         historicalMonthChart.invalidate();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
+        switch (item.getItemId()) {
+            case R.id.actionGraph:
+                intent = new Intent(this, HistoricalPriceActivity.class);
+                startActivity(intent);
+                return true;
+
+            case R.id.actionNews:
+                intent = new Intent(this, NewsActivity.class);
+                startActivity(intent);
+                return true;
+
+            case R.id.actionCurrentPrice:
+                intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+
+        return super.onCreateOptionsMenu(menu);
     }
 }

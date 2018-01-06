@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <item
+        android:id="@+id/actionGraph"
+        android:title="Price History Graph"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/actionNews"
+    android:title="Bitcoin News Feed"
+    app:showAsAction="never"/>
+
+    <item android:id="@+id/actionCurrentPrice"
+        android:title="Current Price"
+        app:showAsAction="never"/>
+
+</menu>

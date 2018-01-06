@@ -1,4 +1,6 @@
-package com.distinguished.bitcoinpricetracker;
+package com.distinguished.bitcoinpricetracker.clients;
+
+import com.distinguished.bitcoinpricetracker.pojos.BitcoinPriceHistory;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
