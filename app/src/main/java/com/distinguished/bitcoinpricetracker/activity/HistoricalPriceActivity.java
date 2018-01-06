@@ -12,6 +12,7 @@ import com.distinguished.bitcoinpricetracker.R;
 import com.distinguished.bitcoinpricetracker.clients.BitcoinAPI;
 import com.distinguished.bitcoinpricetracker.pojos.BitcoinPriceHistory;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -92,6 +93,7 @@ public class HistoricalPriceActivity extends AppCompatActivity {
         LineDataSet dataSet = new LineDataSet(dataEntries, "BitCoin Prices");
         LineData lineData = new LineData(dataSet);
         historicalMonthChart.setData(lineData);
+        historicalMonthChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
         historicalMonthChart.invalidate();
     }
 

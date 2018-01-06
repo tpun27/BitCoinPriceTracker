@@ -43,4 +43,21 @@
         android:id="@+id/EURPriceTextView"
         android:text=""/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="italic"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="2dp"
+        android:text="Powered by CoinDesk"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="italic"
+        android:layout_marginLeft="2dp"
+        android:autoLink="web"
+        android:id="@+id/coindeskLinkTextView"
+        android:text="https://www.coindesk.com/price/"/>
+
 </LinearLayout>

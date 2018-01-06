@@ -1,7 +1,5 @@
 package com.distinguished.bitcoinpricetracker.pojos;
 
-import com.distinguished.bitcoinpricetracker.pojos.Article;
-
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Path;
 import org.simpleframework.xml.Root;

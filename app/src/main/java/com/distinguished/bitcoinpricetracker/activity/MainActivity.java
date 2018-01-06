@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.method.LinkMovementMethod;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -23,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     static final String BASE_URL = "https://api.coindesk.com/";
 
-    TextView USDPriceTextView, GBPPriceTextView, EURPriceTextView;
+    TextView USDPriceTextView, GBPPriceTextView, EURPriceTextView, coindeskLinkTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,13 +37,17 @@ public class MainActivity extends AppCompatActivity {
         USDPriceTextView = (TextView) findViewById(R.id.USDPriceTextView);
         GBPPriceTextView = (TextView) findViewById(R.id.GBPPriceTextView);
         EURPriceTextView = (TextView) findViewById(R.id.EURPriceTextView);
+        coindeskLinkTextView = (TextView) findViewById(R.id.coindeskLinkTextView);
 
+        //coindeskLinkTextView.setMovementMethod(LinkMovementMethod.getInstance());
         populateCurrentPrices();
     }
 
     public void populateCurrentPrices() {
-        Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create()).build();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
 
         BitcoinCurrentPriceAPI bitcoinCurrentPriceAPI = retrofit.create(BitcoinCurrentPriceAPI.class);
 

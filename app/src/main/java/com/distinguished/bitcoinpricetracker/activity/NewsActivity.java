@@ -10,7 +10,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import com.distinguished.bitcoinpricetracker.ArticleAdapter;
+import com.distinguished.bitcoinpricetracker.adapter.ArticleAdapter;
 import com.distinguished.bitcoinpricetracker.R;
 import com.distinguished.bitcoinpricetracker.clients.GoogleFinanceAPI;
 import com.distinguished.bitcoinpricetracker.pojos.Article;
@@ -41,8 +41,10 @@ public class NewsActivity extends AppCompatActivity {
     }
 
     public void populateApp() {
-        Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
-                .addConverterFactory(SimpleXmlConverterFactory.create()).build();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(SimpleXmlConverterFactory.create())
+                .build();
 
         GoogleFinanceAPI googleNewsAPI = retrofit.create(GoogleFinanceAPI.class);
 
