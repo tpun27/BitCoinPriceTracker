@@ -16,6 +16,14 @@
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="italic"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="Bitcoin Price Over Last 30 Days (USD)"/>
+
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/historicalMonthChart"
         android:layout_width="match_parent"

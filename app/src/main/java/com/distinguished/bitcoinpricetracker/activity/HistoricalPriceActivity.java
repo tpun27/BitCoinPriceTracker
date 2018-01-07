@@ -12,10 +12,12 @@ import com.distinguished.bitcoinpricetracker.R;
 import com.distinguished.bitcoinpricetracker.clients.BitcoinAPI;
 import com.distinguished.bitcoinpricetracker.pojos.BitcoinPriceHistory;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -90,10 +92,25 @@ public class HistoricalPriceActivity extends AppCompatActivity {
             entryIndex++;
         }
 
-        LineDataSet dataSet = new LineDataSet(dataEntries, "BitCoin Prices");
+        LineDataSet dataSet = new LineDataSet(dataEntries, "BitCoin Price (USD)");
         LineData lineData = new LineData(dataSet);
         historicalMonthChart.setData(lineData);
         historicalMonthChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
+        historicalMonthChart.getAxisRight().setDrawLabels(false);
+        historicalMonthChart.getDescription().setEnabled(false);
+
+        IAxisValueFormatter formatter = new IAxisValueFormatter() {
+            @Override
+            public String getFormattedValue(float value, AxisBase axis) {
+                if (value != 0 && value != dates.length - 1 && value != dates.length / 2) {
+                    return "";
+                }
+
+                return dates[(int) value].substring(5);
+            }
+        };
+
+        historicalMonthChart.getXAxis().setValueFormatter(formatter);
         historicalMonthChart.invalidate();
     }
 
